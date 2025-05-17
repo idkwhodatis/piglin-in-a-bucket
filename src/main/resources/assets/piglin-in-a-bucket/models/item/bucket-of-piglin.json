@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-      "layer0": "piglin-in-a-bucket:item/piglin-in-a-bucket"
+      "layer0": "piglin-in-a-bucket:item/bucket-of-piglin"
     }
 }

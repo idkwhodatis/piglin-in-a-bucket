@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.idkwhodatis.piglininabucket.item.PiglinInABucketItems;
+import com.idkwhodatis.piglininabucket.ModRegistry;
 
 public class PiglinInABucket implements ModInitializer{
 	public static final String MOD_ID="piglin-in-a-bucket";
@@ -23,6 +23,6 @@ public class PiglinInABucket implements ModInitializer{
 
 		LOGGER.info("Hello Fabric world!");
 
-		PiglinInABucketItems.initialize();
+		ModRegistry.initialize();
 	}
 }
