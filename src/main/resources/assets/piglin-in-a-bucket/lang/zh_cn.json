@@ -1,3 +1,5 @@
 {
-    "item.piglin-in-a-bucket.bucket-of-piglin":"猪灵桶"
+    "item.piglin-in-a-bucket.bucket-of-piglin":"猪灵桶",
+    "tooltip.piglin-in-a-bucket.baby":"幼年",
+    "tooltip.piglin-in-a-bucket.adult":"成年"
 }

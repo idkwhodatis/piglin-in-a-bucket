@@ -1,3 +1,5 @@
 {
-    "item.piglin-in-a-bucket.bucket-of-piglin":"Bucket of Piglin"
+    "item.piglin-in-a-bucket.bucket-of-piglin":"Bucket of Piglin",
+    "tooltip.piglin-in-a-bucket.baby":"Baby",
+    "tooltip.piglin-in-a-bucket.adult":"Adult"
 }
