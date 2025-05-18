@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -34,6 +35,38 @@ public record PiglinData(
         }
         tooltip.add(stats);
         return tooltip;
+    }
+
+    public void toPiglin(PiglinEntity piglin){
+        if(customName!=null && !customName.getString().isEmpty()){
+            piglin.setCustomName(customName.copy());
+        }
+        piglin.setBaby(isBaby);
+        piglin.setHealth(health);
+
+        EquipmentSlot[] armorSlots={EquipmentSlot.FEET,EquipmentSlot.LEGS,EquipmentSlot.CHEST,EquipmentSlot.HEAD};
+        for(int i=0;i<armorItems.size();i++){
+            ItemStack item=armorItems.get(i);
+            if(item.getItem()!=Items.COBBLESTONE){
+                piglin.equipStack(armorSlots[i],item);
+            }
+        }
+
+        EquipmentSlot[] handSlots={EquipmentSlot.MAINHAND,EquipmentSlot.OFFHAND};
+        for(int i=0;i<handItems.size();i++){
+            ItemStack item=handItems.get(i);
+            if(item.getItem()!=Items.COBBLESTONE){
+                piglin.equipStack(handSlots[i],item);
+            }
+        }
+
+        SimpleInventory piglinInventory=piglin.getInventory();
+        for (int i=0;i<inventory.size();i++){
+            ItemStack item=inventory.get(i);
+            if(item.getItem()!=Items.COBBLESTONE){
+                piglinInventory.setStack(i,item);
+            }
+        }
     }
 
     public static final Codec<DefaultedList<ItemStack>> ITEMSTACK_LIST_CODEC=ItemStack.CODEC.listOf().xmap(

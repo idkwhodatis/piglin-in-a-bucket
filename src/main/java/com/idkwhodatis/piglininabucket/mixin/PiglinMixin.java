@@ -4,6 +4,8 @@ import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 
@@ -37,6 +39,8 @@ public class PiglinMixin{
         player.setStackInHand(hand,bucketOfPiglin);
 
         piglin.discard();
+
+		player.getWorld().playSound(null,piglin.getBlockPos(),SoundEvents.ITEM_BUCKET_FILL,SoundCategory.PLAYERS,1.0f,1.0f);
 
 		cir.setReturnValue(ActionResult.SUCCESS);
 	}
