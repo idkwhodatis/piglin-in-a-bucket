@@ -36,7 +36,10 @@ public class PiglinMixin{
 
 		ItemStack bucketOfPiglin=new ItemStack(ModRegistry.BUCKET_OF_PIGLIN);
         bucketOfPiglin.set(ModRegistry.PIGLIN_DATA,piglinData);
-        player.setStackInHand(hand,bucketOfPiglin);
+		handItem.decrement(1);
+		if(!player.getInventory().insertStack(bucketOfPiglin)){
+			player.dropItem(bucketOfPiglin,false);
+		}
 
         piglin.discard();
 
